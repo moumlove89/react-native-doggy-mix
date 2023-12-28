@@ -3,11 +3,9 @@
 #import <CodePush/CodePush.h>
 #if __has_include("RNCPushNotificationIOS.h")
     #import "RNCPushNotificationIOS.h"
-    #import "UMPush/UMessage.h"
     #import "UserNotifications/UNUserNotificationCenter.h"
 #else
     #import <RNCPushNotificationIOS.h>
-    #import <UMPush/UMessage.h>
     #import <UserNotifications/UNUserNotificationCenter.h>
 #endif
 
@@ -77,7 +75,7 @@ static RNDoggyEngine *instance = nil;
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [UMessage didReceiveRemoteNotification:userInfo];
+
     }
     [RNCPushNotificationIOS didReceiveNotificationResponse:response];
 }
@@ -85,8 +83,7 @@ static RNDoggyEngine *instance = nil;
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
     NSDictionary *userInfo = notification.request.content.userInfo;
     if ([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [UMessage setAutoAlert:NO];
-        [UMessage didReceiveRemoteNotification:userInfo];
+
     }
     completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
 }
