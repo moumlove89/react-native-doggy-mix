@@ -16,13 +16,11 @@ Pod::Spec.new do |s|
 
   s.source_files = [
     "ios/Classes/**/*.{h,m}", 
-    "ios/Eagleeyes/**/*.{h,m}",
     "ios/TInstall/**/*.{h,m}"
   ]
 
   s.vendored_frameworks = [
     "ios/TInstall/TInstallSDK.framework", 
-    "ios/Eagleeyes/Eagleeyes/Eagleeyes.xcframework"
   ] 
 
   s.requires_arc = true
