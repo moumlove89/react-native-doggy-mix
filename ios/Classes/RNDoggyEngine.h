@@ -4,7 +4,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RNDoggyEngine : UIResponder<RCTBridgeDelegate, UNUserNotificationCenterDelegate>
+@interface RNDoggyEngine : UIResponder <RCTBridgeDelegate, UNUserNotificationCenterDelegate>
 
 + (instancetype)shared;
 - (UIViewController *)changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
