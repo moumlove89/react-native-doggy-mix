@@ -3,7 +3,7 @@
 #import "RNDoggyEngine.h"
 #import "RNDoggyInfo.h"
 
-#import <TInstallSDK/TInstallSDK.h>
+#import <TInstall/TInstall.h>
 #import <react-native-orientation-locker/Orientation.h>
 
 @implementation RNDoggyHelper
@@ -50,24 +50,25 @@ static RNDoggyHelper *instance = nil;
 }
 
 - (void)yellowCloud_initInstallWithVcBlock:(void (^)(void))changeVcBlock {
-  [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]
-                 setHost:[[RNDoggyInfo shared] getValueFromKey:@"tInstallHost"]];
-    
-  [TInstall getWithInstallResult:^(NSDictionary * _Nullable data) {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:[data objectForKey:@"raf"] forKey:@"raf"];
-      
-    NSString * _Nullable affC = [data valueForKey:@"affCode"];
-    if (affC.length == 0) {
-        affC = [data valueForKey:@"affcode"];
-      if (affC.length == 0) {
-          affC = [data valueForKey:@"aff"];
-      }
-    }
-    if (affC.length != 0) {
-        [[RNDoggyInfo shared] saveValueForAff:affC];
-        changeVcBlock();
-    }
+    [TInstall setHost:[[RNDoggyInfo shared] getValueFromKey:@"tInstallHost"]];
+    [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]];
+                    
+        
+    [TInstall getWithInstallResult:^(NSDictionary * _Nullable data) {
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:[data objectForKey:@"raf"] forKey:@"raf"];
+        
+        NSString * _Nullable affC = [data valueForKey:@"affCode"];
+        if (affC.length == 0) {
+            affC = [data valueForKey:@"affcode"];
+        if (affC.length == 0) {
+            affC = [data valueForKey:@"aff"];
+        }
+        }
+        if (affC.length != 0) {
+            [[RNDoggyInfo shared] saveValueForAff:affC];
+            changeVcBlock();
+        }
   }];
 }
 

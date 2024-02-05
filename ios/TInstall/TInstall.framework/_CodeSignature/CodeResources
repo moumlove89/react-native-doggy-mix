@@ -6,54 +6,31 @@
 	<dict>
 		<key>Headers/TInstall.h</key>
 		<data>
-		5hI3EF7inEL8HWJa29qHOnrPVtA=
-		</data>
-		<key>Headers/TInstallSDK.h</key>
-		<data>
-		elpP1AHauq4uBS9iXo5fjfwhfx0=
+		tu6zAurU9XYkj3wM/IulRESuhVY=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WC3zXoFusW6JLIExq1ouCQmefx4=
+		BflJMgvgLGMTsLXXO63mbTm5Eek=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		4BMPjFVPOc/75mvWefsk7JlMXJ8=
+		1ZVkFgVZZZy9QxKB/OB97C9FoeQ=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/TInstall.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5hI3EF7inEL8HWJa29qHOnrPVtA=
-			</data>
 			<key>hash2</key>
 			<data>
-			clwmz0PAs8uxfhF5bbUQ2SGahQWgx4+O/BUDfwIgFFQ=
-			</data>
-		</dict>
-		<key>Headers/TInstallSDK.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			elpP1AHauq4uBS9iXo5fjfwhfx0=
-			</data>
-			<key>hash2</key>
-			<data>
-			Khv7oE1gspQekBvsDAC0QYwk//q3b+D9Itu0namFTSE=
+			4admAKoV1WNUTzcFiJgY1m7IvR3YDU9IwgBRlC7wIxM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4BMPjFVPOc/75mvWefsk7JlMXJ8=
-			</data>
 			<key>hash2</key>
 			<data>
-			BThNkVPne6Vogu5dJWHPkVwA7yrwG3DzuRX6KItC134=
+			4kRmX0H5I2TG8jfDpjHsYy1nCfNjd/jt+JINs0ZZrRk=
 			</data>
 		</dict>
 	</dict>
