@@ -54,7 +54,7 @@ static RNDoggyHelper *instance = nil;
     [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]];
                     
         
-    [TInstall getWithInstallResult:^(NSDictionary * _Nullable data) {
+    [TInstall getInstall:^(NSDictionary * _Nullable data) {
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:[data objectForKey:@"raf"] forKey:@"raf"];
         

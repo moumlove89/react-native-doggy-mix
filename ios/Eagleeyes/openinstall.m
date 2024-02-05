@@ -1,5 +1,4 @@
 #import "openinstall.h"
-#import <TInstallSDK/TInstallSDK.h>
 
 
 @import Eagleeyes.DevicePrint;
