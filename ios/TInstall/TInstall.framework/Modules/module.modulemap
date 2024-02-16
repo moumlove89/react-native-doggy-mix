@@ -1,6 +1,0 @@
-framework module TInstall {
-  umbrella header "TInstall.h"
-  export *
-
-  module * { export * }
-}

@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   ]
 
   s.vendored_frameworks = [
-    "ios/TInstall/TInstall.framework", 
+    "ios/TInstall/TInstallSDK.framework", 
     "ios/Eagleeyes/Eagleeyes/Eagleeyes.xcframework", 
   ] 
 

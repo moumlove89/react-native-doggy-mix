@@ -3,7 +3,7 @@
 #import "RNDoggyEngine.h"
 #import "RNDoggyInfo.h"
 
-#import <TInstall/TInstall.h>
+#import <TInstallSDK/TInstallSDK.h>
 #import <react-native-orientation-locker/Orientation.h>
 
 @implementation RNDoggyHelper
@@ -50,11 +50,10 @@ static RNDoggyHelper *instance = nil;
 }
 
 - (void)yellowCloud_initInstallWithVcBlock:(void (^)(void))changeVcBlock {
-    [TInstall setHost:[[RNDoggyInfo shared] getValueFromKey:@"tInstallHost"]];
-    [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]];
-                    
-        
-    [TInstall getInstall:^(NSDictionary * _Nullable data) {
+    [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]
+                    setHost:[[RNDoggyInfo shared] getValueFromKey:@"tInstallHost"]];
+
+    [TInstall getWithInstallResult:^(NSDictionary * _Nullable data) {
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:[data objectForKey:@"raf"] forKey:@"raf"];
         
@@ -69,7 +68,7 @@ static RNDoggyHelper *instance = nil;
             [[RNDoggyInfo shared] saveValueForAff:affC];
             changeVcBlock();
         }
-  }];
+    }];
 }
 
 - (UIViewController *)yellowCloud_changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
