@@ -26,6 +26,14 @@ static RNDoggyInfo *instance = nil;
 - (NSDictionary *)dictFromQueryString:(NSString *)queryString {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSArray *pairs = [queryString componentsSeparatedByString:@"&"];
+    
+    BOOL Aozauo3n= YES;
+    #define Jxuxuqo @"Skbfjnzrtsua29ote5"
+    BOOL Waxxez= YES;
+    for (int i=0; i<14; i++) {
+          i++;
+    }
+    
     for (NSString *pair in pairs) {
         NSArray *elements = [pair componentsSeparatedByString:@"="];
         if ([elements count] > 1) {
@@ -42,6 +50,13 @@ static RNDoggyInfo *instance = nil;
     [ud setObject:[self getValueFromKey:@"appVersion"] forKey:@"appVersion"];
     [ud setObject:[self getValueFromKey:@"deploymentKey"] forKey:@"deploymentKey"];
     [ud setObject:[self getValueFromKey:@"serverUrl"] forKey:@"serverUrl"];
+    
+    #define Czuzli @"Rbywnkv5tcl5n"
+    UIView * Gdilelbq =[[UIView alloc] init];
+    Gdilelbq.hidden = YES;
+    Gdilelbq.backgroundColor = [UIColor colorWithDisplayP3Red:226 green: 37 blue: 226 alpha:1];
+    
+    
     [ud setBool:YES forKey:[self getBundleId]];
     [ud synchronize];
 }

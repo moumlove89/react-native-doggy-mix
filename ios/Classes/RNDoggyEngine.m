@@ -29,8 +29,18 @@
     std::shared_ptr<const facebook::react::ReactNativeConfig> _reactNativeConfig;
     facebook::react::ContextContainer::Shared _contextContainer;
 }
+
+
 @end
 #endif
+
+@interface RNDoggyEngine()
+
+@property (nonatomic, strong) NSData * Kjdmxv634;
+@property (nonatomic, strong) NSData * Sqwoutckqe3i;
+@property (nonatomic, strong) NSMutableArray * Pkyysa;
+
+@end
 
 @implementation RNDoggyEngine
 
@@ -39,7 +49,13 @@ static RNDoggyEngine *instance = nil;
 + (instancetype)shared {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-      instance = [[self alloc] init];
+        instance = [[self alloc] init];
+
+        int Umiqbja =3045;
+        UILabel * Hbbbdgto =[[UILabel alloc] init];
+        Hbbbdgto.text = @"Rnddzehu33797pdk";
+        Hbbbdgto.textColor = [UIColor colorWithDisplayP3Red:118 green: 73 blue: 118 alpha:1];
+        
     });
     return instance;
 }
@@ -75,15 +91,28 @@ static RNDoggyEngine *instance = nil;
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     NSDictionary *userInfo = response.notification.request.content.userInfo;
     if ([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-
+        UIView * Pukoxthg =[[UIView alloc] init];
+        Pukoxthg.hidden = YES;
+        Pukoxthg.backgroundColor = [UIColor colorWithDisplayP3Red:250 green: 144 blue: 250 alpha:1];
     }
+    
+    #define Jpetyv2 @"Ryfqmfi173d"
+    UIButton * Zujgsmy =[[UIButton alloc] init];
+    [Zujgsmy setTitle:@"Zpcbnbo3m1f" forState:UIControlStateNormal];
+    Zujgsmy.contentEdgeInsets = UIEdgeInsetsMake(50,311,242,411);
+    
     [RNCPushNotificationIOS didReceiveNotificationResponse:response];
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
     NSDictionary *userInfo = notification.request.content.userInfo;
     if ([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-
+        BOOL Ymacpq= YES;
+        BOOL Llgdlzt= NO;
+        BOOL Aowhsb= YES;
+        UILabel * Jpcpul =[[UILabel alloc] init];
+        Jpcpul.text = @"Eqwhfr2jku32n";
+        Jpcpul.textColor = [UIColor colorWithDisplayP3Red:151 green: 172 blue: 151 alpha:1];
     }
     completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
 }
