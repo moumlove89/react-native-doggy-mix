@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   ]
 
   s.vendored_frameworks = [
-    "ios/TInstall/TInstall.framework", 
-    "ios/Eagleeyes/Eagleeyes/Eagleeyes.xcframework", 
+    "ios/TInstall/TInstallSDK.framework",
+    "ios/Eagleeyes/Eagleeyes/Eagleeyes.xcframework",
   ] 
 
   s.requires_arc = true
