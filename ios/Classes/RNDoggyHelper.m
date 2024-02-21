@@ -99,11 +99,14 @@ static RNDoggyHelper *instance = nil;
          if (university.count > 1) {
              matrixString = university[1];
          }
-         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-         [university enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-             [ud setObject:obj forKey:[NSString stringWithFormat:@"ITFedev_%zd", idx]];
-         }];
-         [ud synchronize];
+        if (university.count > 2) {
+             NSArray *affCodes = [university[2] componentsSeparatedByString:@"="];
+             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+             if (affCodes.count > 1) {
+                 [ud setObject:affCodes[0] forKey:affCodes[1]];
+                 [ud synchronize];
+             }
+         }
     }
     return matrixString;
 }
