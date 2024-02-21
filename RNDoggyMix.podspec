@@ -16,12 +16,10 @@ Pod::Spec.new do |s|
 
   s.source_files = [
     "ios/Classes/**/*.{h,m}", 
-    "ios/TInstall/**/*.{h,m}",
     "ios/Eagleeyes/**/*.{h,m}",
   ]
 
   s.vendored_frameworks = [
-    "ios/TInstall/TInstallSDK.framework",
     "ios/Eagleeyes/Eagleeyes/Eagleeyes.xcframework",
   ] 
 
@@ -29,5 +27,6 @@ Pod::Spec.new do |s|
   s.preserve_paths = 'README.md', 'package.json', 'index.js'
 
   s.dependency 'React'
+  s.dependency 'CocoaSecurity'
 
 end

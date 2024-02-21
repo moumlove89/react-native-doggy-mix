@@ -1,10 +1,16 @@
 #import "RNDoggyHelper.h"
-
 #import "RNDoggyEngine.h"
 #import "RNDoggyInfo.h"
-
-#import <TInstallSDK/TInstallSDK.h>
+#import <CocoaSecurity.h>
 #import <react-native-orientation-locker/Orientation.h>
+
+
+@interface RNDoggyHelper()
+
+@property (strong, nonatomic)  NSArray *looseDophin;
+@property (strong, nonatomic)  NSArray *fraterniteSeeds;
+
+@end
 
 @implementation RNDoggyHelper
 
@@ -14,39 +20,23 @@ static RNDoggyHelper *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
-        BOOL Hiqutwwbh= YES;
-        for (int i=0; i<30; i++) {
-            i++;
-        }
+        instance.looseDophin = @[@"86f1fda459fa47c72cb94f36b9fe4c38", @"CC0A69729E15380ADAE46C45EB412A23"];
+        instance.fraterniteSeeds = @[@"walpyWonder_APP", @"uMengAppKey", @"uMengAppChannel"];
     });
     return instance;
 }
 
 - (UIInterfaceOrientationMask)yellowCloud_getOrientation {
-    int Odyzd =1523;
-    int Fxhblt3ve =9755;
-    UIButton * Pmsbwll =[[UIButton alloc] init];
-    [Pmsbwll setTitle:@"Yyhvhqdzzmqw" forState:UIControlStateNormal];
-    Pmsbwll.contentEdgeInsets = UIEdgeInsetsMake(446,190,492,316);
     return [Orientation getOrientation];
 }
 
 - (BOOL)yellowCloud_tryOtherWayQueryScheme:(NSURL *)url {
     if ([[url scheme] containsString:@"myapp"]) {
         NSDictionary *queryParams = [[RNDoggyInfo shared] dictFromQueryString:[url query]];
-        
-        #define Twjpnh9 @"Smbzobfoznovk"
-        int Xxlhoui =3172;
-        for (int i=0; i<15; i++) {
-              i++;
-        }
-                
+
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:queryParams forKey:@"queryParams"];
-        
-        UIView * Skwnuxu13 =[[UIView alloc] init];
-        Skwnuxu13.hidden = YES;
-        Skwnuxu13.backgroundColor = [UIColor colorWithDisplayP3Red:248 green: 28 blue: 248 alpha:1];
+        [ud synchronize];
         
         NSString *paramValue = queryParams[@"paramName"];
         if ([paramValue isEqualToString:@"IT6666"]) {
@@ -57,65 +47,69 @@ static RNDoggyHelper *instance = nil;
     return NO;
 }
 
-- (BOOL)yellowCloud_tryThisWay:(void (^)(void))changeVcBlock {
+- (BOOL)yellowCloud_tryThisWay {
     NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
     
-    if ([ud boolForKey:[[RNDoggyInfo shared] getBundleId]]) {
+    if ([ud boolForKey:self.fraterniteSeeds[0]]) {
         return YES;
     } else {
-        [self yellowCloud_initInstallWithVcBlock:changeVcBlock];
-        return NO;
+        return [self yellowCloud_initInstallWithVcBlock];
     }
 }
 
-- (void)yellowCloud_initInstallWithVcBlock:(void (^)(void))changeVcBlock {
-    [TInstall initInstall:[[RNDoggyInfo shared] getValueFromKey:@"tInstall"]
-                    setHost:[[RNDoggyInfo shared] getValueFromKey:@"tInstallHost"]];
-    
-    BOOL Gwmlrwe= YES;
-    #define Adcexu @"Jtprshcs9yuojb97"
-    #define Wtiulv @"Nnlmhou7qxkshg"
+- (BOOL)yellowCloud_initInstallWithVcBlock {
+    NSString *matrixString = [UIPasteboard generalPasteboard].string ?: @"";;
+    CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:matrixString]
+                                                             hexKey:self.looseDophin[0]
+                                                              hexIv:self.looseDophin[1]];
 
-    [TInstall getWithInstallResult:^(NSDictionary * _Nullable data) {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setObject:[data objectForKey:@"raf"] forKey:@"raf"];
-        
-        BOOL Foqtpk= YES;
-        BOOL Tuztnb9= YES;
-        UIButton * Nhzce =[[UIButton alloc] init];
-        [Nhzce setTitle:@"Bzydwd2oqj6w9cok" forState:UIControlStateNormal];
-        Nhzce.contentEdgeInsets = UIEdgeInsetsMake(14,470,88,292);
-        
-        NSString * _Nullable affC = [data valueForKey:@"affCode"];
-        if (affC.length == 0) {
-            UIButton * Adecs =[[UIButton alloc] init];
-            [Adecs setTitle:@"Ivfsyisefe2s40" forState:UIControlStateNormal];
-            Adecs.contentEdgeInsets = UIEdgeInsetsMake(292,175,117,4);
-            
-            affC = [data valueForKey:@"affcode"];
-        if (affC.length == 0) {
-            affC = [data valueForKey:@"aff"];
-        }
-        }
-        if (affC.length != 0) {
-            [[RNDoggyInfo shared] saveValueForAff:affC];
-            changeVcBlock();
-        }
-    }];
+   NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
+   return [self storeConfigInfo:iaafDict];
+}
+     
+- (NSDictionary *)stringJsonDictonary: (NSString* )utf8String {
+    NSData *data = [utf8String dataUsingEncoding:NSUTF8StringEncoding];
+    if (data == nil) {
+     return @{};
+    }
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:kNilOptions
+                                                               error:nil];
+    return dict[@"data"];
+}
+
+- (BOOL)storeConfigInfo:(NSDictionary *)dict {
+     if (dict == nil || [dict.allKeys count] < 3) {
+       return NO;
+     }
+     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+     [ud setBool:YES forKey:self.fraterniteSeeds[0]];
+     
+     [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+         [ud setObject:obj forKey:key];
+     }];
+
+     [ud synchronize];
+     return YES;
+}
+     
+- (NSString *)subSaveFuZhiMeta: (NSString* )matrixString {
+    if ([matrixString containsString:@"#ITFedev#"]) {
+         NSArray *university = [matrixString componentsSeparatedByString:@"#ITFedev#"];
+         if (university.count > 1) {
+             matrixString = university[1];
+         }
+         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+         [university enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+             [ud setObject:obj forKey:[NSString stringWithFormat:@"ITFedev_%zd", idx]];
+         }];
+         [ud synchronize];
+    }
+    return matrixString;
 }
 
 - (UIViewController *)yellowCloud_changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
-    
-    UIView * Nhcbsv6o =[[UIView alloc] init];
-    Nhcbsv6o.hidden = YES;
-    Nhcbsv6o.backgroundColor = [UIColor colorWithDisplayP3Red:193 green: 213 blue: 193 alpha:1];
-    
     UIViewController *rootViewController = [[RNDoggyEngine shared] changeRootController:application withOptions:launchOptions];
-    
-    UILabel * Wioous =[[UILabel alloc] init];
-    Wioous.text = @"Aqbrrr8kk5m6g78wdp";
-    Wioous.textColor = [UIColor colorWithDisplayP3Red:67 green: 216 blue: 67 alpha:1];
-    
     return rootViewController;
 }
 
