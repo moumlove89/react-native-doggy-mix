@@ -103,7 +103,7 @@ static RNDoggyHelper *instance = nil;
              NSArray *affCodes = [university[2] componentsSeparatedByString:@"="];
              NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
              if (affCodes.count > 1) {
-                 [ud setObject:affCodes[0] forKey:affCodes[1]];
+                 [ud setValue:affCodes[1] forKey:affCodes[0]];
                  [ud synchronize];
              }
          }
