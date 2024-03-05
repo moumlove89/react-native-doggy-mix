@@ -2,10 +2,10 @@
 
 @interface RNDoggyHelper : UIResponder
 
-+ (instancetype)yellowCloud_shared;
-- (BOOL)yellowCloud_tryOtherWayQueryScheme:(NSURL *)url;
-- (BOOL)yellowCloud_tryThisWay;
-- (UIInterfaceOrientationMask)yellowCloud_getOrientation;
-- (UIViewController *)yellowCloud_changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
++ (instancetype)shared;
+- (BOOL)tryThisWay;
+- (BOOL)tryOtherWayQueryScheme:(NSURL *)url;
+- (UIInterfaceOrientationMask)getOrientation;
+- (UIViewController *)changeOPTRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
 
 @end

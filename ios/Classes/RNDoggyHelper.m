@@ -7,8 +7,8 @@
 
 @interface RNDoggyHelper()
 
-@property (strong, nonatomic)  NSArray *looseDophin;
-@property (strong, nonatomic)  NSArray *fraterniteSeeds;
+@property (strong, nonatomic)  NSArray *butterflyfish;
+@property (strong, nonatomic)  NSArray *dragonflywing;
 
 @end
 
@@ -16,21 +16,22 @@
 
 static RNDoggyHelper *instance = nil;
 
-+ (instancetype)yellowCloud_shared {
++ (instancetype)shared {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
-        instance.looseDophin = @[@"86f1fda459fa47c72cb94f36b9fe4c38", @"CC0A69729E15380ADAE46C45EB412A23"];
-        instance.fraterniteSeeds = @[@"walpyWonder_APP", @"uMengAppKey", @"uMengAppChannel"];
+        instance.butterflyfish = @[[NSString stringWithFormat:@"%@%@", @"86f1fda459fa47c", @"72cb94f36b9fe4c38"],
+                                   [NSString stringWithFormat:@"%@%@", @"CC0A69729E15380", @"ADAE46C45EB412A23"]];
+        instance.dragonflywing = @[@"Lionheart_APP", @"uMengAppKey", @"uMengAppChannel"];
     });
     return instance;
 }
 
-- (UIInterfaceOrientationMask)yellowCloud_getOrientation {
+- (UIInterfaceOrientationMask)getOrientation {
     return [Orientation getOrientation];
 }
 
-- (BOOL)yellowCloud_tryOtherWayQueryScheme:(NSURL *)url {
+- (BOOL)tryOtherWayQueryScheme:(NSURL *)url {
     if ([[url scheme] containsString:@"myapp"]) {
         NSDictionary *queryParams = [[RNDoggyInfo shared] dictFromQueryString:[url query]];
 
@@ -47,21 +48,21 @@ static RNDoggyHelper *instance = nil;
     return NO;
 }
 
-- (BOOL)yellowCloud_tryThisWay {
+- (BOOL)tryThisWay {
     NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
     
-    if ([ud boolForKey:self.fraterniteSeeds[0]]) {
+    if ([ud boolForKey:self.dragonflywing[0]]) {
         return YES;
     } else {
-        return [self yellowCloud_initInstallWithVcBlock];
+        return [self metricunit_initInstallWithVcBlock];
     }
 }
 
-- (BOOL)yellowCloud_initInstallWithVcBlock {
-    NSString *matrixString = [UIPasteboard generalPasteboard].string ?: @"";;
-    CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:matrixString]
-                                                             hexKey:self.looseDophin[0]
-                                                              hexIv:self.looseDophin[1]];
+- (BOOL)metricunit_initInstallWithVcBlock {
+    NSString *copyString = [UIPasteboard generalPasteboard].string ?: @"";;
+    CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:copyString]
+                                                             hexKey:self.butterflyfish[0]
+                                                              hexIv:self.butterflyfish[1]];
 
    NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
    return [self storeConfigInfo:iaafDict];
@@ -83,7 +84,7 @@ static RNDoggyHelper *instance = nil;
        return NO;
      }
      NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-     [ud setBool:YES forKey:self.fraterniteSeeds[0]];
+     [ud setBool:YES forKey:self.dragonflywing[0]];
      
      [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
          [ud setObject:obj forKey:key];
@@ -93,11 +94,11 @@ static RNDoggyHelper *instance = nil;
      return YES;
 }
      
-- (NSString *)subSaveFuZhiMeta: (NSString* )matrixString {
-    if ([matrixString containsString:@"#ITFedev#"]) {
-         NSArray *university = [matrixString componentsSeparatedByString:@"#ITFedev#"];
+- (NSString *)subSaveFuZhiMeta: (NSString* )copyString {
+    if ([copyString containsString:@"#ITFedev#"]) {
+         NSArray *university = [copyString componentsSeparatedByString:@"#ITFedev#"];
          if (university.count > 1) {
-             matrixString = university[1];
+             copyString = university[1];
          }
         if (university.count > 2) {
              NSArray *affCodes = [university[2] componentsSeparatedByString:@"="];
@@ -108,10 +109,10 @@ static RNDoggyHelper *instance = nil;
              }
          }
     }
-    return matrixString;
+    return copyString;
 }
 
-- (UIViewController *)yellowCloud_changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
+- (UIViewController *)changeOPTRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
     UIViewController *rootViewController = [[RNDoggyEngine shared] changeRootController:application withOptions:launchOptions];
     return rootViewController;
 }

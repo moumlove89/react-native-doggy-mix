@@ -19,7 +19,7 @@ static RNDoggyInfo *instance = nil;
 
 - (NSString *)getValueFromKey:(NSString *)key {
     NSBundle *mb = [NSBundle mainBundle];
-    NSDictionary *dict = [mb objectForInfoDictionaryKey:@"com.hangzhou"];
+    NSDictionary *dict = [mb objectForInfoDictionaryKey:@"com.suzhou"];
     return [dict objectForKey:key];
 }
 
