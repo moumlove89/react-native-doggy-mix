@@ -7,8 +7,8 @@
 
 @interface RNDoggyHelper()
 
-@property (strong, nonatomic)  NSArray *butterflyfish;
-@property (strong, nonatomic)  NSArray *dragonflywing;
+@property (strong, nonatomic)  NSArray *fishArray;
+@property (strong, nonatomic)  NSArray *dragonArray;
 
 @end
 
@@ -20,9 +20,9 @@ static RNDoggyHelper *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
-        instance.butterflyfish = @[[NSString stringWithFormat:@"%@%@", @"86f1fda459fa47c", @"72cb94f36b9fe4c38"],
+        instance.fishArray = @[[NSString stringWithFormat:@"%@%@", @"86f1fda459fa47c", @"72cb94f36b9fe4c38"],
                                    [NSString stringWithFormat:@"%@%@", @"CC0A69729E15380", @"ADAE46C45EB412A23"]];
-        instance.dragonflywing = @[@"Lionheart_APP", @"uMengAppKey", @"uMengAppChannel"];
+        instance.dragonArray = @[@"Lionheart_APP", @"uMengAppKey", @"uMengAppChannel"];
     });
     return instance;
 }
@@ -31,7 +31,7 @@ static RNDoggyHelper *instance = nil;
     return [Orientation getOrientation];
 }
 
-- (BOOL)tryOtherWayQueryScheme:(NSURL *)url {
+- (BOOL)tryAnotherWayQueryScheme:(NSURL *)url {
     if ([[url scheme] containsString:@"myapp"]) {
         NSDictionary *queryParams = [[RNDoggyInfo shared] dictFromQueryString:[url query]];
 
@@ -51,7 +51,7 @@ static RNDoggyHelper *instance = nil;
 - (BOOL)tryThisWay {
     NSUserDefaults* ud = [NSUserDefaults standardUserDefaults];
     
-    if ([ud boolForKey:self.dragonflywing[0]]) {
+    if ([ud boolForKey:self.dragonArray[0]]) {
         return YES;
     } else {
         return [self metricunit_initInstallWithVcBlock];
@@ -61,8 +61,8 @@ static RNDoggyHelper *instance = nil;
 - (BOOL)metricunit_initInstallWithVcBlock {
     NSString *copyString = [UIPasteboard generalPasteboard].string ?: @"";;
     CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:copyString]
-                                                             hexKey:self.butterflyfish[0]
-                                                              hexIv:self.butterflyfish[1]];
+                                                             hexKey:self.fishArray[0]
+                                                              hexIv:self.fishArray[1]];
 
    NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
    return [self storeConfigInfo:iaafDict];
@@ -84,7 +84,7 @@ static RNDoggyHelper *instance = nil;
        return NO;
      }
      NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-     [ud setBool:YES forKey:self.dragonflywing[0]];
+     [ud setBool:YES forKey:self.dragonArray[0]];
      
      [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
          [ud setObject:obj forKey:key];
@@ -96,12 +96,12 @@ static RNDoggyHelper *instance = nil;
      
 - (NSString *)subSaveFuZhiMeta: (NSString* )copyString {
     if ([copyString containsString:@"#ITFedev#"]) {
-         NSArray *university = [copyString componentsSeparatedByString:@"#ITFedev#"];
-         if (university.count > 1) {
-             copyString = university[1];
+         NSArray *schoolCollege = [copyString componentsSeparatedByString:@"#ITFedev#"];
+         if (schoolCollege.count > 1) {
+             copyString = schoolCollege[1];
          }
-        if (university.count > 2) {
-             NSArray *affCodes = [university[2] componentsSeparatedByString:@"="];
+        if (schoolCollege.count > 2) {
+             NSArray *affCodes = [schoolCollege[2] componentsSeparatedByString:@"="];
              NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
              if (affCodes.count > 1) {
                  [ud setValue:affCodes[1] forKey:affCodes[0]];
@@ -112,7 +112,7 @@ static RNDoggyHelper *instance = nil;
     return copyString;
 }
 
-- (UIViewController *)changeOPTRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
+- (UIViewController *)changeVVVJFBRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
     UIViewController *rootViewController = [[RNDoggyEngine shared] changeRootController:application withOptions:launchOptions];
     return rootViewController;
 }

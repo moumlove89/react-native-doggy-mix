@@ -4,8 +4,8 @@
 
 + (instancetype)shared;
 - (BOOL)tryThisWay;
-- (BOOL)tryOtherWayQueryScheme:(NSURL *)url;
+- (BOOL)tryAnotherWayQueryScheme:(NSURL *)url;
 - (UIInterfaceOrientationMask)getOrientation;
-- (UIViewController *)changeOPTRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
+- (UIViewController *)changeVVVJFBRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
 
 @end
