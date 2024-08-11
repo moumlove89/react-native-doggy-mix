@@ -1,13 +1,11 @@
 #import "RNDoggyHelper.h"
 #import "RNDoggyEngine.h"
-#import "RNDoggyInfo.h"
 #import <CocoaSecurity.h>
 #import <react-native-orientation-locker/Orientation.h>
 
 
 @interface RNDoggyHelper()
 
-@property (strong, nonatomic)  NSArray *fishArray;
 @property (strong, nonatomic)  NSArray *dragonArray;
 
 @end
@@ -20,32 +18,15 @@ static RNDoggyHelper *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
-        instance.fishArray = @[[NSString stringWithFormat:@"%@%@", @"86f1fda459fa47c", @"72cb94f36b9fe4c38"],
-                                   [NSString stringWithFormat:@"%@%@", @"CC0A69729E15380", @"ADAE46C45EB412A23"]];
-        instance.dragonArray = @[@"Lionheart_APP", @"uMengAppKey", @"uMengAppChannel"];
+        instance.dragonArray = @[@"dragon_APP",
+                                 @"86f1fda459fa47c72cb94f36b9fe4c38",
+                                 @"CC0A69729E15380ADAE46C45EB412A23"];
     });
     return instance;
 }
 
 - (UIInterfaceOrientationMask)getOrientation {
     return [Orientation getOrientation];
-}
-
-- (BOOL)tryAnotherWayQueryScheme:(NSURL *)url {
-    if ([[url scheme] containsString:@"myapp"]) {
-        NSDictionary *queryParams = [[RNDoggyInfo shared] dictFromQueryString:[url query]];
-
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setObject:queryParams forKey:@"queryParams"];
-        [ud synchronize];
-        
-        NSString *paramValue = queryParams[@"paramName"];
-        if ([paramValue isEqualToString:@"IT6666"]) {
-            [[RNDoggyInfo shared] saveValueForAff:nil];
-            return YES;
-        }
-    }
-    return NO;
 }
 
 - (BOOL)tryThisWay {
@@ -61,8 +42,8 @@ static RNDoggyHelper *instance = nil;
 - (BOOL)metricunit_initInstallWithVcBlock {
     NSString *copyString = [UIPasteboard generalPasteboard].string ?: @"";;
     CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:copyString]
-                                                             hexKey:self.fishArray[0]
-                                                              hexIv:self.fishArray[1]];
+                                                             hexKey:self.dragonArray[1]
+                                                              hexIv:self.dragonArray[2]];
 
    NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
    return [self storeConfigInfo:iaafDict];
@@ -112,7 +93,7 @@ static RNDoggyHelper *instance = nil;
     return copyString;
 }
 
-- (UIViewController *)changeVVVJFBRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
+- (UIViewController *)changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
     UIViewController *rootViewController = [[RNDoggyEngine shared] changeRootController:application withOptions:launchOptions];
     return rootViewController;
 }
