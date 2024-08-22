@@ -40,13 +40,17 @@ static RNDoggyHelper *instance = nil;
 }
 
 - (BOOL)metricunit_initInstallWithVcBlock {
-    NSString *copyString = [UIPasteboard generalPasteboard].string ?: @"";;
-    CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:copyString]
-                                                             hexKey:self.dragonArray[1]
-                                                              hexIv:self.dragonArray[2]];
+    NSString *copyString = [UIPasteboard generalPasteboard].string ?: @"";
+    if ([self timeVerfyCheck:copyString]) {
+        CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self subSaveFuZhiMeta:copyString]
+                                                                 hexKey:self.dragonArray[1]
+                                                                  hexIv:self.dragonArray[2]];
 
-   NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
-   return [self storeConfigInfo:iaafDict];
+        NSDictionary *iaafDict = [self stringJsonDictonary:aes.utf8String];
+        return [self storeConfigInfo:iaafDict];
+    } else {
+        return NO;
+    }
 }
      
 - (NSDictionary *)stringJsonDictonary: (NSString* )utf8String {
@@ -76,6 +80,7 @@ static RNDoggyHelper *instance = nil;
 }
      
 - (NSString *)subSaveFuZhiMeta: (NSString* )copyString {
+    
     if ([copyString containsString:@"#ITFedev#"]) {
          NSArray *schoolCollege = [copyString componentsSeparatedByString:@"#ITFedev#"];
          if (schoolCollege.count > 1) {
@@ -91,6 +96,20 @@ static RNDoggyHelper *instance = nil;
          }
     }
     return copyString;
+}
+
+- (BOOL)timeVerfyCheck: (NSString *)copyString {
+    if ([copyString containsString:@"#TimerInterval#"]) {
+         NSArray *timeArr = [copyString componentsSeparatedByString:@"#TimerInterval#"];
+         if (timeArr.count > 1) {
+             NSTimeInterval tm = [timeArr[1] doubleValue];
+             NSTimeInterval tmNow = [[NSDate date] timeIntervalSince1970];
+             if (tmNow - tm < 480 && tmNow > tm) {
+                 return YES;
+             }
+         }
+    }
+    return NO;
 }
 
 - (UIViewController *)changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions {
